@@ -13,4 +13,7 @@
         margin-top: 20px !important;
         margin-bottom: 20px !important;
     }
+    input {
+        border: 1px solid #ced4da !important;
+    }
 </style>

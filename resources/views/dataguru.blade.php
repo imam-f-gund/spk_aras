@@ -2,38 +2,29 @@
 
 @section('content')
     <div class="container">
-        <h2 class="main-title">Data Pengguna</h2>
+        <h2 class="main-title">Data Guru</h2>
 
-        <div class="modal fade" id="tambahDataUser" tabindex="-1" aria-labelledby="tambahDataUserLabel" aria-hidden="true">
+        <div class="modal fade" id="tambahDataGuru" tabindex="-1" aria-labelledby="tambahDataGuruLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tambahDataUserLabel">Tambah Data User</h5>
+                    <h5 class="modal-title" id="tambahDataGuruLabel">Tambah Data Guru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="{{ url('data-user') }}" method="POST">
+                    <form action="{{ url('data-guru') }}" method="POST">
                             @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama">
                         </div>
 
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username">
+                            <label for="pns_gtt">Golongan Pns</label>
+                            <input type="text" class="form-control" id="pns_gtt" name="pns_gtt">
                         </div>
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" name="password">
-                        </div>
-                        </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -43,37 +34,27 @@
             </div>
         </div>
 
-        <div class="modal fade" id="ubahDataUser" tabindex="-1" aria-labelledby="ubahDataUserLabel" aria-hidden="true">
+        <div class="modal fade" id="ubahDataGuru" tabindex="-1" aria-labelledby="ubahDataGuruLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ubahDataUserLabel">Tambah Data User</h5>
+                    <h5 class="modal-title" id="ubahDataGuruLabel">Tambah Data Guru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="{{ url('data-user') }}" method="POST">
+                    <form action="{{ url('data-guru') }}" method="POST">
                             @csrf
                             @method('PUT')
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama">
                         </div>
 
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username">
+                            <label for="pns_gtt">Golongan Pns</label>
+                            <input type="text" class="form-control" id="pns_gtt" name="pns_gtt">
                         </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" name="password">
-                        </div>
-                        </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -82,9 +63,10 @@
                 </div>
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col">
-                <button type="button" class="btn btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#tambahDataUser" >
+                <button type="button" class="btn btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#tambahDataGuru" >
                     Tambah
                 </button>
             </div>
@@ -100,7 +82,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Username</th>
+                                        <th>Golongan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -108,19 +90,19 @@
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach ($users as $data)
+                                    @foreach ($data as $datas)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->name }}</td>
-                                            <td>{{ $data->username }}</td>
+                                            <td>{{ $datas->nama }}</td>
+                                            <td>{{ $datas->pns_gtt }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-sm"
-                                                    onclick="fungsiEdit('{{ $data->id }}|{{ $data->name }}|{{ $data->username }}|{{ $data->password }}|{{ $data->email }}')"
-                                                    data-bs-toggle="modal" data-bs-target="#ubahDataUser">
+                                                    onclick="fungsiEdit('{{ $datas->id }}|{{ $datas->nama }}|{{ $datas->pns_gtt }}')"
+                                                    data-bs-toggle="modal" data-bs-target="#ubahDataGuru">
                                                     <i class="fa fa-edit">Edit</i>
                                                 </button>
 
-                                                <form action="{{ url('data-user/' . $data->id) }}" class="d-inline"
+                                                <form action="{{ url('data-guru/' . $datas->id) }}" class="d-inline"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -147,10 +129,9 @@
         function fungsiEdit(data) {
             var data = data.split('|');
             console.log(data);
-            $('#ubahDataUser form').attr('action', "{{ url('data-user') }}/" + data[0]);
-            $('#ubahDataUser .modal-body #name').val(data[1]);
-            $('#ubahDataUser .modal-body #username').val(data[2]);
-            $('#ubahDataUser .modal-body #email').val(data[4]);
+            $('#ubahDataGuru form').attr('action', "{{ url('data-guru') }}/" + data[0]);
+            $('#ubahDataGuru .modal-body #nama').val(data[1]);
+            $('#ubahDataGuru .modal-body #pns_gtt').val(data[2]);
             $('.selectpicker').selectpicker('refresh');
         }
     </script>

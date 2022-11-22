@@ -20,9 +20,18 @@
                     <a href="dashboard"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
                 </li>
                 <li>
-                    <a href="data-user"><span class="icon document" aria-hidden="true"></span>Data User</a>
+                    <a href="data-user"><span class="icon user-3" aria-hidden="true"></span>Data User</a>
+                </li> 
+                <li>
+                    <a href="data-guru"><span class="icon document" aria-hidden="true"></span>Data Guru</a>
                 </li>
-               
+                <li>
+                    <a href="data-periode"><span class="icon document" aria-hidden="true"></span>Periode</a>
+                </li>
+                <li>
+                    <a href="data-kriteria"><span class="icon folder" aria-hidden="true"></span>Kategori</a>
+                </li>
+
                 <li>
                     <a class="show-cat-btn" href="##">
                         <span class="icon folder" aria-hidden="true"></span>Categories

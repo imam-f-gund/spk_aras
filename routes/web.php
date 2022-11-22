@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DataUserController;
+use App\Http\Controllers\DataGuruController;
+use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\KriteriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +32,6 @@ Route::get('/table', function () {
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::resource('data-user', DataUserController::class);
+Route::resource('data-guru', DataGuruController::class);
+Route::resource('data-periode', PeriodeController::class);
+Route::resource('data-kriteria', KriteriaController::class);

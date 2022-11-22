@@ -2,38 +2,23 @@
 
 @section('content')
     <div class="container">
-        <h2 class="main-title">Data Pengguna</h2>
+        <h2 class="main-title">Data Periode</h2>
 
-        <div class="modal fade" id="tambahDataUser" tabindex="-1" aria-labelledby="tambahDataUserLabel" aria-hidden="true">
+        <div class="modal fade" id="tambahDataPeriode" tabindex="-1" aria-labelledby="tambahDataPeriodeLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tambahDataUserLabel">Tambah Data User</h5>
+                    <h5 class="modal-title" id="tambahDataPeriodeLabel">Tambah Data Periode</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="{{ url('data-user') }}" method="POST">
+                    <form action="{{ url('data-periode') }}" method="POST">
                             @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <label for="nama_periode">Nama Periode</label>
+                            <input type="text" class="form-control" id="nama_periode" name="nama_periode">
                         </div>
-
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" name="password">
-                        </div>
-                        </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -43,37 +28,23 @@
             </div>
         </div>
 
-        <div class="modal fade" id="ubahDataUser" tabindex="-1" aria-labelledby="ubahDataUserLabel" aria-hidden="true">
+        <div class="modal fade" id="ubahDataPeriode" tabindex="-1" aria-labelledby="ubahDataPeriodeLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ubahDataUserLabel">Tambah Data User</h5>
+                    <h5 class="modal-title" id="ubahDataPeriodeLabel">Tambah Data Periode</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="{{ url('data-user') }}" method="POST">
+                    <form action="{{ url('data-periode') }}" method="POST">
                             @csrf
                             @method('PUT')
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <label for="nama_periode">Nama Periode</label>
+                            <input type="text" class="form-control" id="nama_periode" name="nama_periode">
                         </div>
 
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" name="password">
-                        </div>
-                        </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -82,9 +53,10 @@
                 </div>
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col">
-                <button type="button" class="btn btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#tambahDataUser" >
+                <button type="button" class="btn btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#tambahDataPeriode" >
                     Tambah
                 </button>
             </div>
@@ -99,8 +71,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Username</th>
+                                        <th>Nama Periode</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -108,19 +79,18 @@
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach ($users as $data)
+                                    @foreach ($periode as $datas)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->name }}</td>
-                                            <td>{{ $data->username }}</td>
+                                            <td>{{ $datas->nama_periode }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-sm"
-                                                    onclick="fungsiEdit('{{ $data->id }}|{{ $data->name }}|{{ $data->username }}|{{ $data->password }}|{{ $data->email }}')"
-                                                    data-bs-toggle="modal" data-bs-target="#ubahDataUser">
+                                                    onclick="fungsiEdit('{{ $datas->id }}|{{ $datas->nama_periode }}')"
+                                                    data-bs-toggle="modal" data-bs-target="#ubahDataPeriode">
                                                     <i class="fa fa-edit">Edit</i>
                                                 </button>
 
-                                                <form action="{{ url('data-user/' . $data->id) }}" class="d-inline"
+                                                <form action="{{ url('data-periode/' . $datas->id) }}" class="d-inline"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -147,10 +117,8 @@
         function fungsiEdit(data) {
             var data = data.split('|');
             console.log(data);
-            $('#ubahDataUser form').attr('action', "{{ url('data-user') }}/" + data[0]);
-            $('#ubahDataUser .modal-body #name').val(data[1]);
-            $('#ubahDataUser .modal-body #username').val(data[2]);
-            $('#ubahDataUser .modal-body #email').val(data[4]);
+            $('#ubahDataPeriode form').attr('action', "{{ url('data-periode') }}/" + data[0]);
+            $('#ubahDataPeriode .modal-body #nama_periode').val(data[1]);
             $('.selectpicker').selectpicker('refresh');
         }
     </script>

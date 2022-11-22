@@ -2,37 +2,30 @@
 
 @section('content')
     <div class="container">
-        <h2 class="main-title">Data Pengguna</h2>
+        <h2 class="main-title">Data Kriteria</h2>
 
-        <div class="modal fade" id="tambahDataUser" tabindex="-1" aria-labelledby="tambahDataUserLabel" aria-hidden="true">
+        <div class="modal fade" id="tambahDataKriteria" tabindex="-1" aria-labelledby="tambahDataKriteriaLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tambahDataUserLabel">Tambah Data User</h5>
+                    <h5 class="modal-title" id="tambahDataKriteriaLabel">Tambah Data Kriteria</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="{{ url('data-user') }}" method="POST">
+                    <form action="{{ url('data-kriteria') }}" method="POST">
                             @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" name="password">
-                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="kode_kriteria">Kode Kriteria</label>
+                                <input type="text" class="form-control" id="kode_kriteria" name="kode_kriteria">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_kriteria">Nama Kriteria</label>
+                                <input type="text" class="form-control" id="nama_kriteria" name="nama_kriteria">
+                            </div>
+                            <div class="form-group">
+                                <label for="keterangan">Keterangan</label>
+                                <input type="text" class="form-control" id="keterangan" name="keterangan">
+                            </div>
                         </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -43,37 +36,30 @@
             </div>
         </div>
 
-        <div class="modal fade" id="ubahDataUser" tabindex="-1" aria-labelledby="ubahDataUserLabel" aria-hidden="true">
+        <div class="modal fade" id="ubahDataKriteria" tabindex="-1" aria-labelledby="ubahDataKriteriaLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ubahDataUserLabel">Tambah Data User</h5>
+                    <h5 class="modal-title" id="ubahDataKriteriaLabel">Tambah Data Guru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="{{ url('data-user') }}" method="POST">
+                    <form action="{{ url('data-kriteria') }}" method="POST">
                             @csrf
                             @method('PUT')
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" name="password">
-                        </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="kode_kriteria">Kode Kriteria</label>
+                                <input type="text" class="form-control" id="kode_kriteria" name="kode_kriteria">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_kriteria">Nama Kriteria</label>
+                                <input type="text" class="form-control" id="nama_kriteria" name="nama_kriteria">
+                            </div>
+                            <div class="form-group">
+                                <label for="keterangan">Keterangan</label>
+                                <input type="text" class="form-control" id="keterangan" name="keterangan">
+                            </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -82,9 +68,10 @@
                 </div>
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col">
-                <button type="button" class="btn btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#tambahDataUser" >
+                <button type="button" class="btn btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#tambahDataKriteria" >
                     Tambah
                 </button>
             </div>
@@ -99,8 +86,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Username</th>
+                                        <th>Kode Kriteria</th>
+                                        <th>Nama Kriteria</th>
+                                        <th>Keterangan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -108,19 +96,20 @@
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach ($users as $data)
+                                    @foreach ($kriteria as $datas)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->name }}</td>
-                                            <td>{{ $data->username }}</td>
+                                            <td>{{ $datas->kode_kriteria }}</td>
+                                            <td>{{ $datas->nama_kriteria }}</td>
+                                            <td>{{ $datas->keterangan }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-sm"
-                                                    onclick="fungsiEdit('{{ $data->id }}|{{ $data->name }}|{{ $data->username }}|{{ $data->password }}|{{ $data->email }}')"
-                                                    data-bs-toggle="modal" data-bs-target="#ubahDataUser">
+                                                    onclick="fungsiEdit('{{ $datas->id }}|{{ $datas->kode_kriteria }}|{{ $datas->nama_kriteria }}|{{ $datas->keterangan }}')"
+                                                    data-bs-toggle="modal" data-bs-target="#ubahDataKriteria">
                                                     <i class="fa fa-edit">Edit</i>
                                                 </button>
 
-                                                <form action="{{ url('data-user/' . $data->id) }}" class="d-inline"
+                                                <form action="{{ url('data-kriteria/' . $datas->id) }}" class="d-inline"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -147,10 +136,10 @@
         function fungsiEdit(data) {
             var data = data.split('|');
             console.log(data);
-            $('#ubahDataUser form').attr('action', "{{ url('data-user') }}/" + data[0]);
-            $('#ubahDataUser .modal-body #name').val(data[1]);
-            $('#ubahDataUser .modal-body #username').val(data[2]);
-            $('#ubahDataUser .modal-body #email').val(data[4]);
+            $('#ubahDataKriteria form').attr('action', "{{ url('data-kriteria') }}/" + data[0]);
+            $('#ubahDataKriteria .modal-body #kode_kriteria').val(data[1]);
+            $('#ubahDataKriteria .modal-body #nama_kriteria').val(data[2]);
+            $('#ubahDataKriteria .modal-body #keterangan').val(data[2]);
             $('.selectpicker').selectpicker('refresh');
         }
     </script>
