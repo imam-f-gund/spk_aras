@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DataUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,4 @@ Route::get('/table', function () {
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::resource('data-user', DataUserController::class);

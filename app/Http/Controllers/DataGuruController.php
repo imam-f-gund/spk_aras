@@ -16,7 +16,7 @@ class DataGuruController extends Controller
     public function index()
     {
         //
-        $data = DataGuru::all();
+        $data = DataGuru::orderBy('id', 'DESC')->get();
         return view('dataguru', compact('data'));
     }
 

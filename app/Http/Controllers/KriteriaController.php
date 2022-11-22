@@ -16,7 +16,7 @@ class KriteriaController extends Controller
     public function index()
     {
         //
-        $kriteria = Kriteria::all();
+        $kriteria = Kriteria::orderBy('id', 'DESC')->get();
         return view('kriteria', compact('kriteria'));
     }
 

@@ -16,7 +16,7 @@ class DataUserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('id', 'DESC')->get();
         return view('datauser', compact('users'));
     }
 
