@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class DataUserController extends Controller
 {
@@ -13,7 +14,8 @@ class DataUserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('datauser', compact('users'));
     }
 
     /**
@@ -23,7 +25,7 @@ class DataUserController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +36,21 @@ class DataUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+
+        Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
+        return back();
+
     }
 
     /**
@@ -45,7 +61,7 @@ class DataUserController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
