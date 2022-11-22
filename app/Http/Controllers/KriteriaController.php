@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Kriteria;
 
 class KriteriaController extends Controller
 {
@@ -14,6 +16,8 @@ class KriteriaController extends Controller
     public function index()
     {
         //
+        $kriteria = Kriteria::all();
+        return view('kriteria', compact('kriteria'));
     }
 
     /**
@@ -35,6 +39,20 @@ class KriteriaController extends Controller
     public function store(Request $request)
     {
         //
+        request()->validate([
+            'kode_kriteria' => 'required',
+            'nama_kriteria' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $kriteria = new Kriteria;
+        $kriteria->kode_kriteria = $request->kode_kriteria;
+        $kriteria->nama_kriteria = $request->nama_kriteria;
+        $kriteria->keterangan = $request->keterangan;
+        $kriteria->save();
+
+        Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
+        return back();
     }
 
     /**
@@ -69,6 +87,20 @@ class KriteriaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        request()->validate([
+            'kode_kriteria' => 'required',
+            'nama_kriteria' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $kriteria = Kriteria::findOrFail($id);
+        $kriteria->kode_kriteria = $request->kode_kriteria;
+        $kriteria->nama_kriteria = $request->nama_kriteria;
+        $kriteria->keterangan = $request->keterangan;
+        $kriteria->save();
+
+        Alert::success('Berhasil', 'Data Berhasil Diubah');
+        return back();
     }
 
     /**
@@ -80,5 +112,10 @@ class KriteriaController extends Controller
     public function destroy($id)
     {
         //
+        $kriteria = Kriteria::findOrFail($id);
+        $kriteria->delete();
+
+        Alert::success('Berhasil', 'Data Berhasil Dihapus');
+        return back();
     }
 }
