@@ -37,12 +37,14 @@ class DataUserController extends Controller
     public function store(Request $request)
     {
         request()->validate([
+            'username' => 'required',
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
         ]);
 
         $user = new User;
+        $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
