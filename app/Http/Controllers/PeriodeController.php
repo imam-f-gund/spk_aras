@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Periode;
 
 class PeriodeController extends Controller
 {
@@ -14,6 +16,8 @@ class PeriodeController extends Controller
     public function index()
     {
         //
+        $periode = Periode::all();
+        return view('periode', compact('periode'));
     }
 
     /**
@@ -35,6 +39,16 @@ class PeriodeController extends Controller
     public function store(Request $request)
     {
         //
+        request()->validate([
+            'nama_periode' => 'required',
+        ]);
+
+        $periode = new Periode;
+        $periode->nama_periode = $request->nama_periode;
+        $periode->save();
+
+        Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
+        return back();
     }
 
     /**
@@ -69,6 +83,13 @@ class PeriodeController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $periode = Periode::findOrFail($id);
+        $periode->nama_periode = $request->nama_periode;
+        $periode->save();
+
+        Alert::success('Berhasil', 'Data Berhasil Diubah');
+        return back();
     }
 
     /**
@@ -80,5 +101,10 @@ class PeriodeController extends Controller
     public function destroy($id)
     {
         //
+        $periode = Periode::findOrFail($id);
+        $periode->delete();
+
+        Alert::success('Berhasil', 'Data Berhasil Dihapus');
+        return back();
     }
 }

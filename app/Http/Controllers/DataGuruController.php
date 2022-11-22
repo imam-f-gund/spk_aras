@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\DataGuru;
 
 class DataGuruController extends Controller
 {
@@ -14,6 +16,8 @@ class DataGuruController extends Controller
     public function index()
     {
         //
+        $data = DataGuru::all();
+        return view('dataguru', compact('data'));
     }
 
     /**
@@ -35,6 +39,19 @@ class DataGuruController extends Controller
     public function store(Request $request)
     {
         //
+        request()->validate([
+            'nama' => 'required',
+            'pns_gtt' => 'required',
+        ]);
+
+        $data = new DataGuru;
+        $data->nama = $request->nama;
+        $data->pns_gtt = $request->pns_gtt;
+        $data->save();
+
+        Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
+        return back();
+
     }
 
     /**
@@ -69,6 +86,18 @@ class DataGuruController extends Controller
     public function update(Request $request, $id)
     {
         //
+        request()->validate([
+            'nama' => 'required',
+            'pns_gtt' => 'required',
+        ]);
+
+        $data = DataGuru::findOrFail($id);
+        $data->nama = $request->nama;
+        $data->pns_gtt = $request->pns_gtt;
+        $data->save();
+
+        Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
+        return back();
     }
 
     /**
@@ -80,5 +109,10 @@ class DataGuruController extends Controller
     public function destroy($id)
     {
         //
+        $data = DataGuru::findOrFail($id);
+        $data->delete();
+
+        Alert::success('Berhasil', 'Data Berhasil Dihapus');
+        return back();
     }
 }
