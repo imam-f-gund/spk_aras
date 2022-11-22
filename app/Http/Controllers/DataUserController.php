@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class DataUserController extends Controller
 {
@@ -48,7 +49,7 @@ class DataUserController extends Controller
         $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = hash($request->password);
+        $user->password = Hash::make($request->password);
         $user->save();
 
         Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
@@ -98,7 +99,7 @@ class DataUserController extends Controller
         $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = hash($request->password);
+        $user->password = Hash::make($request->password);
         $user->save();
 
         Alert::success('Berhasil', 'Data Berhasil Diubah');
