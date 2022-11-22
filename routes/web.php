@@ -22,15 +22,18 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/dashboard', function () {
+Route::get('dashboard', function () {
     return view('dashboard');
-});
+})->name('dashboard');
 
 Route::get('/table', function () {
     return view('table');
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('cek-login', [AuthController::class, 'cek_login'])->name('cek_login');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::resource('data-user', DataUserController::class);
 Route::resource('data-guru', DataGuruController::class);
 Route::resource('data-periode', PeriodeController::class);

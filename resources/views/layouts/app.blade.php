@@ -115,7 +115,7 @@
                                 </span>
                             </button>
                             <ul class="users-item-dropdown nav-user-dropdown dropdown">
-                                <li>
+                                <!-- <li>
                                     <a href="##">
                                         <i data-feather="user" aria-hidden="true"></i>
                                         <span>Profile</span>
@@ -126,12 +126,22 @@
                                         <i data-feather="settings" aria-hidden="true"></i>
                                         <span>Account settings</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
-                                    <a class="danger" href="##">
-                                        <i data-feather="log-out" aria-hidden="true"></i>
-                                        <span>Log out</span>
-                                    </a>
+                                    <!-- <a class="danger" href=""> -->
+                                        
+                                        <form action="{{ url('logout') }}" class="d-inline"
+                                                    method="POST">
+                                                    @csrf
+                                                  
+                                                    <button type="submit">
+                                                        
+                                                    <i type="submit" data-feather="log-out" aria-hidden="true"></i>
+                                                        <span>Log out</span>
+                                                    </button>
+                                                </form>
+                                        
+                                    <!-- </a> -->
                                 </li>
                             </ul>
                         </div>

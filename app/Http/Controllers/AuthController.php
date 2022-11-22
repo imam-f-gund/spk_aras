@@ -17,6 +17,7 @@ class AuthController extends Controller
 
     public function cek_login(Request $request)
     {
+        // dd($request);
         $credentials = $request->validate([
             'username' => ['required'],
             'password' => ['required'],
