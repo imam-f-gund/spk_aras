@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bobot;
+use App\Models\Kriteria;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use App\Models\Kriteria;
 
 class KriteriaController extends Controller
 {
@@ -16,7 +17,7 @@ class KriteriaController extends Controller
     public function index()
     {
         //
-        $kriteria = Kriteria::orderBy('id', 'DESC')->get();
+        $kriteria = Kriteria::get();
         return view('kriteria', compact('kriteria'));
     }
 
@@ -50,6 +51,12 @@ class KriteriaController extends Controller
         $kriteria->nama_kriteria = $request->nama_kriteria;
         $kriteria->keterangan = $request->keterangan;
         $kriteria->save();
+
+        $bobot = new Bobot;
+        $bobot->nilai_roc = $request->nilai_bobot;
+        $bobot->nilai_bobot = $request->nilai_bobot;
+        $bobot->id_kriteria = $kriteria->id;
+        $bobot->save();
 
         Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
         return back();
@@ -99,6 +106,12 @@ class KriteriaController extends Controller
         $kriteria->keterangan = $request->keterangan;
         $kriteria->save();
 
+        $bobot = Bobot::where('id_kriteria', $id)->first();
+        $bobot->nilai_roc = $request->nilai_bobot;
+        $bobot->nilai_bobot = $request->nilai_bobot;
+        $bobot->id_kriteria = $kriteria->id;
+        $bobot->save();
+
         Alert::success('Berhasil', 'Data Berhasil Diubah');
         return back();
     }
@@ -111,9 +124,11 @@ class KriteriaController extends Controller
      */
     public function destroy($id)
     {
-        //
         $kriteria = Kriteria::findOrFail($id);
         $kriteria->delete();
+
+        $bobot = Bobot::where('id_kriteria', $id)->first();
+        $bobot->delete();
 
         Alert::success('Berhasil', 'Data Berhasil Dihapus');
         return back();

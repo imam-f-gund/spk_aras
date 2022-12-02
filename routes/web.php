@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\DataGuruController;
-use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\PeriodeController;
 use Illuminate\Support\Facades\Route;
 
 /*

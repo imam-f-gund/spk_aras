@@ -9,4 +9,13 @@ class Kriteria extends Model
 {
     use HasFactory;
     protected $table = 'kriteria';
+
+    protected $guraded = [
+        'id',
+    ];
+
+    public function bobot()
+    {
+        return $this->hasOne(Bobot::class, 'id_kriteria');
+    }
 }
