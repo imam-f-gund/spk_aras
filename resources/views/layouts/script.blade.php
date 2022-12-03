@@ -12,6 +12,7 @@
 <!-- Custom scripts -->
 <script src="{{ asset('js/script.js') }}"></script>
 
+<script src="{{ asset('plugins/fontawesome/js/all.min.js') }}"></script>
 
 <script>
     $(document).ready(function() {
@@ -20,6 +21,15 @@
                 "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json"
             },
             "ordering": false
+        });
+    });
+
+    $(document).ready(function() {
+        $(".dataTablePerhitungan").DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json"
+            },
+            "ordering": true
         });
     });
 </script>

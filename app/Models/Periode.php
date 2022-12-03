@@ -9,4 +9,9 @@ class Periode extends Model
 {
     use HasFactory;
     protected $table = 'periode';
+
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class, 'id_periode');
+    }
 }

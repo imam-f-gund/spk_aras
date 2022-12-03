@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer mt-lg-0">
     <div class="container footer--flex">
         <div class="footer-start">
             <p>

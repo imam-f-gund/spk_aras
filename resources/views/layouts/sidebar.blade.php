@@ -1,154 +1,51 @@
 <aside class="sidebar">
     <div class="sidebar-start">
         <div class="sidebar-head">
-            <a href="/" class="logo-wrapper" title="Home">
+            <a href="/dashboard" class="logo-wrapper text-center" title="Home">
                 <span class="sr-only">Home</span>
-                <span class="icon logo" aria-hidden="true"></span>
-                <div class="logo-text">
-                    <span class="logo-title">Elegant</span>
-                    <span class="logo-subtitle">Dashboard</span>
-                </div>
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="icon-logo" />
+
             </a>
-            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+            {{-- <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
                 <span class="sr-only">Toggle menu</span>
                 <span class="icon menu-toggle" aria-hidden="true"></span>
-            </button>
+            </button> --}}
         </div>
         <div class="sidebar-body">
             <ul class="sidebar-body-menu">
                 <li>
-                    <a href="dashboard"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+                    <a href="{{ url('dashboard') }}"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
                 </li>
                 <li>
-                    <a href="data-user"><span class="icon user-3" aria-hidden="true"></span>Data User</a>
-                </li> 
-                <li>
-                    <a href="data-guru"><span class="icon document" aria-hidden="true"></span>Data Guru</a>
+                    <a href="{{ url('data-user') }}"><span class="icon fa-solid fa-users fa-xl"
+                            aria-hidden="true"></span>Data User</a>
                 </li>
                 <li>
-                    <a href="data-periode"><span class="icon edit" aria-hidden="true"></span>Periode</a>
+                    <a href="{{ url('data-guru') }}"><span class="icon fa-solid fa-chalkboard-user fa-xl"
+                            aria-hidden="true"></span>Data Guru</a>
                 </li>
                 <li>
-                    <a href="data-kriteria"><span class="icon folder" aria-hidden="true"></span>Kategori</a>
-                </li>
-
-                <!-- <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon folder" aria-hidden="true"></span>Categories
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="categories.html">All categories</a>
-                        </li>
-                    </ul>
+                    <a href="{{ url('data-periode') }}"><span class="icon fa-solid fa-calendar-days fa-xl"
+                            aria-hidden="true"></span>Periode</a>
                 </li>
                 <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon image" aria-hidden="true"></span>Media
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="media-01.html">Media-01</a>
-                        </li>
-                        <li>
-                            <a href="media-02.html">Media-02</a>
-                        </li>
-                    </ul>
+                    <a href="{{ url('data-kriteria') }}"><span class="icon fa-solid fa-sitemap fa-xl"
+                            aria-hidden="true"></span>Kriteria</a>
                 </li>
                 <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon paper" aria-hidden="true"></span>Pages
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="pages.html">All pages</a>
-                        </li>
-                        <li>
-                            <a href="new-page.html">Add new page</a>
-                        </li>
-                    </ul>
+                    <a href="{{ url('penilaian') }}"><span class="icon fa-solid fa-file-pen fa-xl"
+                            aria-hidden="true"></span>Penilaian</a>
                 </li>
                 <li>
-                    <a href="comments.html">
-                        <span class="icon message" aria-hidden="true"></span>
-                        Comments
-                    </a>
-                    <span class="msg-counter">7</span>
+                    <a href="{{ url('perhitungan') }}"><span class="icon fa-solid fa-diagram-project fa-xl"
+                            aria-hidden="true"></span>Perhitungan</a>
+                </li>
+                <li>
+                    <a href="{{ url('perangkingan') }}"><span class="icon fa-solid fa-ranking-star fa-xl"
+                            aria-hidden="true"></span>Perangkingan</a>
                 </li>
             </ul>
-            <span class="system-menu__title">system</span>
-            <ul class="sidebar-body-menu">
-                <li>
-                    <a href="appearance.html"><span class="icon edit" aria-hidden="true"></span>Appearance</a>
-                </li>
-                <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon category" aria-hidden="true"></span>Extentions
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="extention-01.html">Extentions-01</a>
-                        </li>
-                        <li>
-                            <a href="extention-02.html">Extentions-02</a>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon user-3" aria-hidden="true"></span>Users
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="users-01.html">Users-01</a>
-                        </li>
-                        <li>
-                            <a href="users-02.html">Users-02</a>
-                        </li>
-                    </ul>
-                </li> -->
-                <li>
-                    <a href="##"><span class="icon setting" aria-hidden="true"></span>Settings</a>
-                </li>
-            </ul>
+            {{-- <span class="system-menu__title">system</span> --}}
         </div>
-    </div>
-    <div class="sidebar-footer">
-        <a href="##" class="sidebar-user">
-            <span class="sidebar-user-img">
-                <picture>
-                    <source
-                        srcset="
-                                ./img/avatar/avatar-illustrated-01.webp
-                            "
-                        type="image/webp" />
-                    <img src="./img/avatar/avatar-illustrated-01.png" alt="User name" />
-                </picture>
-            </span>
-            <div class="sidebar-user-info">
-                <span class="sidebar-user__title">Nafisa Sh.</span>
-                <span class="sidebar-user__subtitle">Support manager</span>
-            </div>
-        </a>
     </div>
 </aside>

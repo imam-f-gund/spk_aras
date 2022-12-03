@@ -15,19 +15,18 @@ return new class extends Migration
     {
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_ guru');
-            $table->foreign('id_ guru')->references('id')->on('data_guru')->onDelete('cascade');
+            $table->unsignedBigInteger('id_guru');
+            $table->foreign('id_guru')->references('id')->on('data_guru')->onDelete('cascade');
             $table->unsignedBigInteger('id_kriteria');
             $table->foreign('id_kriteria')->references('id')->on('kriteria')->onDelete('cascade');
             $table->unsignedBigInteger('id_periode');
             $table->foreign('id_periode')->references('id')->on('periode')->onDelete('cascade');
-            $table->double('Nilai', 15, 8)->nullable();
+            $table->double('nilai', 15, 8:fres)->nullable();
             $table->double('normalisasi_kriteria', 15, 8)->nullable();
             $table->double('normalisasi_bobot', 15, 8)->nullable();
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.

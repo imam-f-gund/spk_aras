@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Hasil;
+use App\Models\Kriteria;
+use App\Models\Periode;
 
 class PerangkinganController extends Controller
 {
@@ -13,28 +15,9 @@ class PerangkinganController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $periode = Periode::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('perangkingan', compact('periode'));
     }
 
     /**
@@ -45,40 +28,18 @@ class PerangkinganController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $periode_pilihan = Periode::findOrFail($id);
+        $kriteria = Kriteria::all();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $hasil_perhitungan = Hasil::where('id_periode', $periode_pilihan->id)
+            ->orderBy('id_guru', 'asc')
+            ->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $hasil_perangkingan = Hasil::where('id_periode', $periode_pilihan->id)
+            ->orderBy('rank', 'asc')
+            ->limit(10)
+            ->get();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('perangkingan', compact('periode_pilihan', 'hasil_perangkingan', 'hasil_perhitungan'));
     }
 }

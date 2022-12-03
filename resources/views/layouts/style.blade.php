@@ -4,6 +4,8 @@
 
 <link rel="stylesheet" href={{ asset('css/style.min.css') }} />
 
+<link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/all.min.css') }}" />
+
 <style>
     .dataTables_filter input {
         border: 1px solid #ced4da !important;
@@ -13,6 +15,7 @@
         margin-top: 20px !important;
         margin-bottom: 20px !important;
     }
+
     input {
         border: 1px solid #ced4da !important;
     }

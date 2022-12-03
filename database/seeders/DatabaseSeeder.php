@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Bobot;
 use App\Models\Kriteria;
+use App\Models\Periode;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -102,6 +103,27 @@ class DatabaseSeeder extends Seeder
                 'nilai_roc' => 0.04,
                 'nilai_bobot' => 0.04,
                 'id_kriteria' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+
+        Periode::insert([
+            [
+                'id' => 1,
+                'nama_periode' => '2019',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 2,
+                'nama_periode' => '2020',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 3,
+                'nama_periode' => '2021',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

@@ -2,8 +2,6 @@
 
 @section('content')
     <div class="container">
-        <h2 class="main-title">Data Kriteria</h2>
-
         <div class="modal fade" id="tambahDataKriteria" tabindex="-1" aria-labelledby="tambahDataKriteriaLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -90,6 +88,9 @@
         </div>
 
         <div class="row mb-3">
+            <div class="col">
+                <h2 class="main-title my-auto">Data Kriteria</h2>
+            </div>
             <div class="col">
                 <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
                     data-bs-target="#tambahDataKriteria">
