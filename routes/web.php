@@ -8,6 +8,7 @@ use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\PerangkinganController;
 use App\Http\Controllers\PerhituganController;
 use App\Http\Controllers\PeriodeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,27 +23,35 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('login');
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
+    } else {
+        return view('login');;
+    }
 });
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('cek-login', [AuthController::class, 'cek_login'])->name('cek_login');
 
 Route::get('/table', function () {
     return view('table');
 });
 
-Route::get('login', [AuthController::class, 'login'])->name('login');
-Route::post('cek-login', [AuthController::class, 'cek_login'])->name('cek_login');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+// route middleware auth
+Route::middleware('auth')->group(function () {
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::resource('data-user', DataUserController::class);
-Route::resource('data-guru', DataGuruController::class);
-Route::resource('data-periode', PeriodeController::class);
-Route::resource('data-kriteria', KriteriaController::class);
-Route::resource('penilaian', PenilaianController::class);
-Route::resource('perhitungan', PerhituganController::class);
-Route::resource('perangkingan', PerangkinganController::class)->only([
-    'index', 'show',
-]);
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::resource('data-user', DataUserController::class);
+    Route::resource('data-guru', DataGuruController::class);
+    Route::resource('data-periode', PeriodeController::class);
+    Route::resource('data-kriteria', KriteriaController::class);
+    Route::resource('penilaian', PenilaianController::class);
+    Route::resource('perhitungan', PerhituganController::class);
+    Route::resource('perangkingan', PerangkinganController::class)->only([
+        'index', 'show',
+    ]);
+});
