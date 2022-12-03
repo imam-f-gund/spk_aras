@@ -14,13 +14,13 @@
                     <form action="{{ url('data-periode') }}" method="POST">
                             @csrf
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="nama_periode">Nama Periode</label>
                             <input type="text" class="form-control" id="nama_periode" name="nama_periode">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                     </form>
@@ -39,14 +39,14 @@
                             @csrf
                             @method('PUT')
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="nama_periode">Nama Periode</label>
                             <input type="text" class="form-control" id="nama_periode" name="nama_periode">
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                     </form>

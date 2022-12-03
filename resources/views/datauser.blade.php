@@ -14,28 +14,28 @@
                     <form action="{{ url('data-user') }}" method="POST">
                             @csrf
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="name">Nama</label>
                             <input type="text" class="form-control" id="name" name="name">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="password">Password</label>
                             <input type="text" class="form-control" id="password" name="password">
                         </div>
                         </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                     </form>
@@ -54,28 +54,28 @@
                             @csrf
                             @method('PUT')
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="name">Nama</label>
                             <input type="text" class="form-control" id="name" name="name">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="password">Password</label>
                             <input type="text" class="form-control" id="password" name="password">
                         </div>
                         </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                     </form>

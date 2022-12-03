@@ -14,19 +14,19 @@
                     <form action="{{ url('data-guru') }}" method="POST">
                             @csrf
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="nama">Nama</label>
                             <input type="text" class="form-control" id="nama" name="nama">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="pns_gtt">Golongan Pns</label>
                             <input type="text" class="form-control" id="pns_gtt" name="pns_gtt">
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                     </form>
@@ -45,18 +45,18 @@
                             @csrf
                             @method('PUT')
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="nama">Nama</label>
                             <input type="text" class="form-control" id="nama" name="nama">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="pns_gtt">Golongan Pns</label>
                             <input type="text" class="form-control" id="pns_gtt" name="pns_gtt">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                     </form>
