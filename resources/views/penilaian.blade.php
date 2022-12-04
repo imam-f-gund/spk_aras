@@ -66,6 +66,36 @@
             </div>
         </div>
 
+        <div class="modal fade" id="importNilai" tabindex="-1" aria-labelledby="importNilaiLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="importNilaiLabel">Import Penilaian</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ url('import-nilai') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="hidden" name="id_periode" value="{{ $periode_pilihan->id }}">
+                            <p class="mb-2">
+                                <small>
+                                    Download contoh template <a href="{{ url('template.xlsx') }}" class="">disini</a>
+                                </small>
+                            </p>
+                            <div class="form-group mb-2">
+                                <label class="form-label" for="nilai_bobot">File Excel</label>
+                                <input type="file" class="form-control" name="file" id="file">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade" id="ubahPenilaian" tabindex="-1" aria-labelledby="ubahPenilaianLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -110,6 +140,11 @@
                         data-bs-target="#tambahPenilaian">
                         Tambah
                     </button>
+
+                    {{-- <button type="button" class="btn btn-success float-end me-3" data-bs-toggle="modal"
+                        data-bs-target="#importNilai">
+                        Import
+                    </button> --}}
                 </div>
             </div>
             <div class="row">

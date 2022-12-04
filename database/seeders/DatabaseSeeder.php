@@ -9,6 +9,7 @@ use App\Models\Kriteria;
 use App\Models\Periode;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -128,5 +129,8 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+
+        $path = 'db/data.sql';
+        DB::unprepared(file_get_contents($path));
     }
 }

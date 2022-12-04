@@ -2,33 +2,33 @@
 
 @section('content')
     <div class="container">
-        <h2 class="main-title">Data Guru</h2>
+
 
         <div class="modal fade" id="tambahDataGuru" tabindex="-1" aria-labelledby="tambahDataGuruLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tambahDataGuruLabel">Tambah Data Guru</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tambahDataGuruLabel">Tambah Data Guru</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <form action="{{ url('data-guru') }}" method="POST">
-                            @csrf
-                    <div class="modal-body">
-                        <div class="form-group mb-2">
-                            <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama">
-                        </div>
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-group mb-2">
+                                <label for="nama">Nama</label>
+                                <input type="text" class="form-control" id="nama" name="nama">
+                            </div>
 
-                        <div class="form-group mb-2">
-                            <label for="pns_gtt">Golongan Pns</label>
-                            <input type="text" class="form-control" id="pns_gtt" name="pns_gtt">
-                        </div>
+                            <div class="form-group mb-2">
+                                <label for="pns_gtt">Golongan Pns</label>
+                                <input type="text" class="form-control" id="pns_gtt" name="pns_gtt">
+                            </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -37,28 +37,28 @@
         <div class="modal fade" id="ubahDataGuru" tabindex="-1" aria-labelledby="ubahDataGuruLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ubahDataGuruLabel">Tambah Data Guru</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ubahDataGuruLabel">Tambah Data Guru</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <form action="{{ url('data-guru') }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                    <div class="modal-body">
-                        <div class="form-group mb-2">
-                            <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama">
-                        </div>
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="form-group mb-2">
+                                <label for="nama">Nama</label>
+                                <input type="text" class="form-control" id="nama" name="nama">
+                            </div>
 
-                        <div class="form-group mb-2">
-                            <label for="pns_gtt">Golongan Pns</label>
-                            <input type="text" class="form-control" id="pns_gtt" name="pns_gtt">
+                            <div class="form-group mb-2">
+                                <label for="pns_gtt">Golongan Pns</label>
+                                <input type="text" class="form-control" id="pns_gtt" name="pns_gtt">
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -66,7 +66,11 @@
 
         <div class="row mb-3">
             <div class="col">
-                <button type="button" class="btn btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#tambahDataGuru" >
+                <h2 class="main-title my-auto">Data Guru</h2>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
+                    data-bs-target="#tambahDataGuru">
                     Tambah
                 </button>
             </div>
@@ -115,7 +119,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                               
+
                             </table>
                         </div>
                     </div>
@@ -125,14 +129,14 @@
     @endsection
 
     @section('script')
-    <script>
-        function fungsiEdit(data) {
-            var data = data.split('|');
-            console.log(data);
-            $('#ubahDataGuru form').attr('action', "{{ url('data-guru') }}/" + data[0]);
-            $('#ubahDataGuru .modal-body #nama').val(data[1]);
-            $('#ubahDataGuru .modal-body #pns_gtt').val(data[2]);
-            $('.selectpicker').selectpicker('refresh');
-        }
-    </script>
+        <script>
+            function fungsiEdit(data) {
+                var data = data.split('|');
+                console.log(data);
+                $('#ubahDataGuru form').attr('action', "{{ url('data-guru') }}/" + data[0]);
+                $('#ubahDataGuru .modal-body #nama').val(data[1]);
+                $('#ubahDataGuru .modal-body #pns_gtt').val(data[2]);
+                $('.selectpicker').selectpicker('refresh');
+            }
+        </script>
     @endsection

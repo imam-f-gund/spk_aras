@@ -35,7 +35,7 @@
                             <div class="text-center mb-3">
                                 <h5>Bobot Kriteria</h5>
                             </div>
-                            <div class="table-responsive">
+                            <div class="mx-auto">
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -72,7 +72,7 @@
                                 <h5>Mencari Nilai Optimum (A0)</h5>
                             </div>
                             <hr>
-                            <div class="table-responsive">
+                            <div class="w-100 d-inline">
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -102,7 +102,7 @@
                                 <h5>Normalisasi Kriteria</h5>
                             </div>
                             <hr>
-                            <div class="table-responsive">
+                            <div class="w-100 d-inline">
                                 <table class="dataTablePerhitungan table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -140,7 +140,7 @@
                                 <h5>Normalisasi Terbobot</h5>
                             </div>
                             <hr>
-                            <div class="table-responsive">
+                            <div class="w-100 d-inline">
                                 <table class="dataTablePerhitungan table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -178,7 +178,7 @@
                                 <h5>Nilai Ultimate Si dan Ki</h5>
                             </div>
                             <hr>
-                            <div class="table-responsive">
+                            <div class="w-100 d-inline">
                                 <table class="dataTablePerhitungan table table-bordered table-striped">
                                     <thead>
                                         <tr>

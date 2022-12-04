@@ -54,4 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('perangkingan', PerangkinganController::class)->only([
         'index', 'show',
     ]);
+
+    Route::post('import-nilai', [PenilaianController::class, 'import'])->name('import-nilai');
 });

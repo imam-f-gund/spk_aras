@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\NilaiImport;
 use App\Models\DataGuru;
 use App\Models\Kriteria;
 use App\Models\Nilai;
 use App\Models\Periode;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PenilaianController extends Controller
@@ -74,6 +76,7 @@ class PenilaianController extends Controller
     public function show($id)
     {
         $periode_pilihan = Periode::findOrFail($id);
+
         $kriteria = Kriteria::all();
         $guru = DataGuru::whereIn('id', function ($query) use ($id) {
             $query->select('id_guru')->from('nilai')->where('id_periode', $id);
@@ -160,6 +163,23 @@ class PenilaianController extends Controller
             ->delete();
 
         Alert::success('Berhasil', 'Data Berhasil Dihapus');
+
+        return back();
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx',
+            'id_periode' => 'required',
+        ]);
+
+        $file = $request->file('file');
+        $id_periode = $request->id_periode;
+
+        Excel::import(new NilaiImport($id_periode), $file);
+
+        Alert::success('Berhasil', 'Data Berhasil Diimport');
 
         return back();
     }

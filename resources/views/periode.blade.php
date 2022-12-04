@@ -2,53 +2,54 @@
 
 @section('content')
     <div class="container">
-        <h2 class="main-title">Data Periode</h2>
 
-        <div class="modal fade" id="tambahDataPeriode" tabindex="-1" aria-labelledby="tambahDataPeriodeLabel" aria-hidden="true">
+        <div class="modal fade" id="tambahDataPeriode" tabindex="-1" aria-labelledby="tambahDataPeriodeLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tambahDataPeriodeLabel">Tambah Data Periode</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tambahDataPeriodeLabel">Tambah Data Periode</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <form action="{{ url('data-periode') }}" method="POST">
-                            @csrf
-                    <div class="modal-body">
-                        <div class="form-group mb-2">
-                            <label for="nama_periode">Nama Periode</label>
-                            <input type="text" class="form-control" id="nama_periode" name="nama_periode">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-group mb-2">
+                                <label for="nama_periode">Nama Periode</label>
+                                <input type="text" class="form-control" id="nama_periode" name="nama_periode">
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="ubahDataPeriode" tabindex="-1" aria-labelledby="ubahDataPeriodeLabel" aria-hidden="true">
+        <div class="modal fade" id="ubahDataPeriode" tabindex="-1" aria-labelledby="ubahDataPeriodeLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ubahDataPeriodeLabel">Tambah Data Periode</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ubahDataPeriodeLabel">Tambah Data Periode</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <form action="{{ url('data-periode') }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                    <div class="modal-body">
-                        <div class="form-group mb-2">
-                            <label for="nama_periode">Nama Periode</label>
-                            <input type="text" class="form-control" id="nama_periode" name="nama_periode">
-                        </div>
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="form-group mb-2">
+                                <label for="nama_periode">Nama Periode</label>
+                                <input type="text" class="form-control" id="nama_periode" name="nama_periode">
+                            </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -56,7 +57,11 @@
 
         <div class="row mb-3">
             <div class="col">
-                <button type="button" class="btn btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#tambahDataPeriode" >
+                <h2 class="main-title my-auto">Data Periode</h2>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
+                    data-bs-target="#tambahDataPeriode">
                     Tambah
                 </button>
             </div>
@@ -103,7 +108,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                               
+
                             </table>
                         </div>
                     </div>
@@ -113,13 +118,13 @@
     @endsection
 
     @section('script')
-    <script>
-        function fungsiEdit(data) {
-            var data = data.split('|');
-            console.log(data);
-            $('#ubahDataPeriode form').attr('action', "{{ url('data-periode') }}/" + data[0]);
-            $('#ubahDataPeriode .modal-body #nama_periode').val(data[1]);
-            $('.selectpicker').selectpicker('refresh');
-        }
-    </script>
+        <script>
+            function fungsiEdit(data) {
+                var data = data.split('|');
+                console.log(data);
+                $('#ubahDataPeriode form').attr('action', "{{ url('data-periode') }}/" + data[0]);
+                $('#ubahDataPeriode .modal-body #nama_periode').val(data[1]);
+                $('.selectpicker').selectpicker('refresh');
+            }
+        </script>
     @endsection

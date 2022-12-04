@@ -8,6 +8,7 @@ use App\Models\Kriteria;
 use App\Models\Nilai;
 use App\Models\Periode;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PerhituganController extends Controller
 {
@@ -53,6 +54,14 @@ class PerhituganController extends Controller
     public function show($id)
     {
         $periode_pilihan = Periode::findOrFail($id);
+
+        $cek_nilai = Nilai::where('id_periode', $id)->first();
+
+        if (empty($cek_nilai)) {
+            Alert::error('Gagal', 'Data Nilai Belum Diinput');
+            return back();
+        }
+
         $kriteria = Kriteria::all();
 
         $guru = DataGuru::whereIn('id', function ($query) use ($id) {

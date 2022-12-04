@@ -23,6 +23,10 @@
             width: 40%;
             height: auto;
         }
+
+        .dataTables_wrapper {
+            width: 100%;
+        }
     </style>
 
 </head>
@@ -85,7 +89,7 @@
                 @yield('content')
             </main>
             <!-- ! Footer -->
-            @include('layouts.footer')
+            {{-- @include('layouts.footer') --}}
         </div>
     </div>
 

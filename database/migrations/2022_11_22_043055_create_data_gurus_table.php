@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('data_guru', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('pns_gtt');
+            $table->string('pns_gtt')->nullable();
             $table->timestamps();
         });
     }
