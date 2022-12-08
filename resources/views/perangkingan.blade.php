@@ -75,6 +75,7 @@
                                         <tr>
                                             <th class="text-center">Nama Guru</th>
                                             <th class="text-center">Rank</th>
+                                            <th class="text-center">Nilai</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -82,6 +83,7 @@
                                             <tr>
                                                 <td class="text-center">{{ $item->guru->nama }}</td>
                                                 <td class="text-center">{{ $item->rank }}</td>
+                                                <td class="text-center">{{ $item->ki }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
